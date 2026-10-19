@@ -10,6 +10,7 @@
 * [Acknowledgements](#acknowledgements)
 
 # News
+* Oct. 2026: fix for build/ubuntu26-build-error
 * Apr. 2017: release version 3.0
 
 # Abstract
@@ -48,10 +49,7 @@ MCMD provides about 70 different commands
 ## requirements
 ### target OS
 We confirmed that MCMD run on the following operating systems.
-* MacOS 10.9.5(Marverics)以上
-* CentOS 7.3 1611
-* Ubuntu 16.04 LTS
-* Bash on Ubuntu on Windows(Windows 10)
+* Ubuntu 26.04 LTS
 
 ### necessary tools/libraries for compilation
 * c++ compiler
@@ -60,48 +58,7 @@ We confirmed that MCMD run on the following operating systems.
 * [lib2xml Library](http://xmlsoft.org/)
 
 ## compile and install
-### MacOS X
-```sh
-## install autotools and boost if not installed
-$ brew install autoconf
-$ brew install automake
-$ brew install libtool
-$ brew install boost
-
-## download the sources
-$ git clone https://github.com/nysol/mcmd.git
-$ cd mcmd
-
-## compile and install
-$ aclocal
-$ autoreconf -i
-$ automake --add-missing
-$ ./configure
-$ make
-$ sudo make install
-```
-
-### CentOS
-```sh
-## install autotools,boost,libxml2 if not installed
-$ sudo yum update
-$ sudo yum groupinstall "Development Tools"
-$ sudo yum install boost-devel
-$ sudo yum install libxml2-devel
-
-## compile and install
-$ git clone https://github.com/nysol/mcmd.git
-$ cd mcmd
-
-## compile and install
-$ aclocal
-$ autoreconf -i
-$ ./configure
-$ make
-$ sudo make install
-```
-
-### Ubuntu,Bash on Windows
+### Ubuntu
 ```sh
 ## install autotools,boost,libxml2 if not installed
 $ sudo apt-get update
@@ -118,7 +75,7 @@ $ cd mcmd/
 ## compile and install
 $ aclocal
 $ autoreconf -i
-$ ./configure
+$ ./configure CXXFLAGS="-O3 -std=gnu++17 -fpermissive"
 $ make
 $ sudo make install
 

@@ -174,7 +174,7 @@ int kgSep::run(void) try
 			fstr = fstr+_dField_str[i];
 			if(_mkdir_flg){
 				boost::filesystem::path filename=boost::filesystem::path(fstr);
-				boost::filesystem::path dirname =filename.branch_path();
+				boost::filesystem::path dirname =filename.parent_path();
 				create_directories(dirname);
 			}
 			// ファイルオープン
